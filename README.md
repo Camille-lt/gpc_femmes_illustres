@@ -2,7 +2,7 @@
 <img width="1883" height="957" alt="Capture d’écran 2026-02-19 à 19 37 56" src="https://github.com/user-attachments/assets/2411ad0b-62c3-455b-978a-de2b250cbe3e" />
 📖 **GPC - Femmes Illustres
 🌟 **Présentation**
-**GPC - Femmes Illustres** est un projet dédié à la mise en avant de **figures féminines historiques et contemporaines** ayant **marqué** **l'histoire**, **les sciences**, **les arts** et **la politique.**
+**GPC - Femmes Illustres** est un projet dédié à la mise en avant de **figures féminines historiques et contemporaines ayant marqué l'histoire, les sciences, les arts et la politique.**
 L'objectif est de lutter contre l'invisibilisation des femmes en proposant une plateforme interactive et éducative.
 
 Ce projet a été réalisé dans le cadre de ma formation à Ada Tech School, mettant l'accent sur le développement d'une interface utilisateur intuitive et la gestion dynamique de contenus.
@@ -30,6 +30,6 @@ Une attention particulière a été portée à la typographie et au contraste po
 🛠️ **Installation**
 Cloner le projet :
 **Bash**
-git clone https://github.com/Camille-lt/gpc_femmes_illustres.git
+git clone [https://github.com/Camille-lt/gpc_femmes_illustres.git]
 **Lancer le projet :**
 Ouvrez simplement le fichier **index.html** dans votre navigateur ou utilisez l'extension Live Server sur VS Code.
