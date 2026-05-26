@@ -1,151 +1,171 @@
 @font-face {
   font-family: 'Montserrat';
   src: url('./fonts/Montserrat-Bold.ttf') format('truetype');
-  /* Version bold */
   font-weight: 700;
   font-style: normal;
 }
-
-/* Intégration de la police Aboreto */
 @font-face {
   font-family: 'Aboreto';
   src: url('./fonts/Aboreto-Regular.ttf') format('truetype');
-  /* Version normale */
   font-weight: 400;
   font-style: normal;
 }
-
+/* Configuration globale */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   max-width: 100%;
+  background: #FBFBFE;
 }
-
+/* Navbar */
+.menu {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  position: relative;
+}
+.logo {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #132A3C !important;
+  flex-shrink: 0;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+nav a {
+  color: #132A3C;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+}
+/* Banner */
 .banner {
   position: relative;
-  background-image: url('https://media.beauxarts.com/uploads/2024/09/unec66a6484-1300x975.jpg');
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('https://media.beauxarts.com/uploads/2024/09/unec66a6484-1300x975.jpg');
   background-size: cover;
-  background-position: center 25%;
-  height: 57vh;
+  background-position: center 30%;
+  height: 65vh;
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  /* Aligne horizontalement à gauche */
-  align-items: flex-start;
-  /* Aligne verticalement en bas */
-  padding-top: 20px;
-}
-
-.banner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(73, 58, 58, 0.133);
-  filter: brightness(70%);
-  /* z-index: 1; */
-
-}
-
-.banner h1 {
-  position: relative;
-
-  font-size: 65px;
-  text-align: left;
-  margin: 0;
-
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
+}
+.banner h1 {
+  font-size: 3rem;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
   color: white;
-
-
-  font-family: 'Aboreto';
-  top: -20px;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+.banner p {
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 2;
+}
+/* Project Description */
+.project-description {
+  margin: 2rem 3rem;
+}
+.project-description h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.project-description p {
+  color: rgb(58, 58, 53);
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 15px;
+}
+.project-description p:last-child {
+  margin-bottom: 0;
+}
+/* PORTRAITS descriptions */
+.portraits-description {
+margin: 2rem 3rem;
+font-family: 'Montserrat', sans-serif;
+}
+.portraits-description  h2 {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.portraits-description p {
+  color: rgb(58, 58, 53);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+/* Filtres de recherche */
+.banner-two {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.banner-two button {
+  background-color: #FFFFFF;
+  color: #132A3C;
+  border: 1px solid #E2E8F0;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 11px;
+  transition: all 0.1s ease-in-out;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); */
+}
+.banner-two button:hover {
+  background-color: #F8FAFC;
+  border-color: #132A3C;
+}
+.banner-two button.active {
+  background-color: #132A3C;
+  color: #FFFFFF;
+  border-color: #132A3C;
+  font-weight: 600;
+  /* box-shadow: 0 4px 10px rgba(19, 42, 60, 0.15); */
 }
 
-/* Marcher sur les pas de ces féminines icones... */
-h1 {
-  color: rgba(9, 8, 8, 0.873);
-  text-align: left;
-  margin-top: 60px;
-
+.category {
+  display: none;
+  margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 20px;
-
-  font-family: 'Aboreto';
-  font-weight: bold;
+  padding: 10px;
 }
-
-.p-1 {
-  color: rgb(58, 58, 53);
-  font-size: 1.2vw;
-  text-align: left;
-  margin-top: 0;
-
-  margin-left: 20px;
-
-  font-family: 'Montserrat';
-}
-
-.p-2 {
-  color: rgb(58, 58, 53);
-  font-size: 1.2vw;
-  text-align: left;
-  margin-top: 3px;
-  /* Ajuste la marge entre p1 et p2 */
-  margin-bottom: 60px;
-  margin-left: 20px;
-  /* Marge à gauche */
-  font-family: 'Montserrat';
-}
-
-h2{
-  /* color: rgb(124, 63, 117); */
-  margin-top: 25px;
-}
+/* Container des Portraits */
 .all-womentitle {
   font-family: 'Aboreto';
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding-left: 4px;
-  /* margin-bottom: 20px; */
-
+  margin: 2rem 3rem;
 }
-
-.name-index {
-  /* border: 3px double #df7a7a; */
-  border-radius: 7px;
-  font-family: 'Aboreto';
-  /* padding: -20 20px;  */
-}
-
-.categorie {
-  background-color: rgba(31, 130, 115, 0.863);
-  font-family: 'Aboreto';
-  color: white;
-}
-
-.women-pictures {
-  width: 220px;
-  height: 330px;
-}
-
-.women-address {
-  color: rgb(6, 5, 5);
-  font-family: 'montserrat';
-}
-
-.desc-all {
-  background-color: rgb(249, 249, 249);
-}
-
 #womenPortraits {
   display: flex;
   overflow-x: scroll;
@@ -155,80 +175,45 @@ h2{
   margin-left: 20px;
   margin-bottom: 20px;
 }
-
 #womenPortraits::-webkit-scrollbar {
   height: 9px;
 }
-
 #womenPortraits::-webkit-scrollbar-thumb {
   background-color: #eddddb;
-  /* Couleur barre */
   border-radius: 4px;
 }
-
 #womenPortraits::-webkit-scrollbar-track {
   background-color: #f0f0f0;
-  /* Couleur barre de défilement */
   border-radius: 4px;
 }
-
+/* Cards */
 .card {
-  margin-top: 50px;
-  /* Supprime la marge au-dessus du titre */
   width: 300px;
   height: 450px;
   perspective: 1000px;
-  /* Pour un effet 3D */
   flex-shrink: 0;
   margin: 0.2%;
   border-radius: 5%;
   transform-origin: 60% 50%;
   scroll-snap-align: start;
-  overflow: hidden;  /* pour ne pas dépsser l'espace de la carte */
+  overflow: hidden;
 }
- 
-
 .card-inner {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  /* Préserve l'effet 3D */
   transition: transform 0.6s;
   position: absolute;
   border-radius: 5%;
-  /* transform: translateZ(0);  */
 }
-
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 5%;
-
-
-  /* border: 5px solid #030303ad; */
-}
-
-/* Le verso de la carte est initialement retourné */
 .card.flipped .card-inner {
   transform: rotateY(180deg);
-  /* Tourner la carte */
 }
-
 .card:hover {
   transform: scale(1.1) translateX(12px);
-  /* Agrandit la carte au survol */
   box-shadow: 0 4px 8px rgba(184, 1, 1, 0.2);
-  /* Ajoute une ombre douce */
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  /* Transition pour un effet fluide */
 }
-
 .card-front {
   display: flex;
   flex-direction: column;
@@ -236,110 +221,94 @@ h2{
   align-items: center;
   padding: 3px;
   background-color: #f9ebe5;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 5%;
 }
-
 .card-front .name-index {
   font-size: 1.2rem;
   color: rgb(0, 0, 0);
   margin-bottom: 3px;
+  border-radius: 7px;
+  font-family: 'Aboreto';
 }
-
 .card-front .women-pictures {
   display: flex;
   justify-content: center;
+  width: 220px;
+  height: 330px;
 }
-
 .card-front img {
   width: 100%;
-  /* L'image occupe toute la largeur de la carte */
   height: auto;
-  /* Limite la hauteur de l'image */
   object-fit: cover;
 }
-
 .card-back {
-  transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 5%;
+  transform: rotateY(180deg);
 }
-
 .card-back .desc-all {
+  background-color: rgb(249, 249, 249);
   padding: 20px;
 }
-
-.banner-two {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5px;
-
+.categorie {
+  background-color: rgba(31, 130, 115, 0.863);
+  font-family: 'Aboreto';
+  color: white;
 }
-
-
-button {
-  background-color: #eddddb;
-  color: black;
-  border: 1px solid #d1caca;
-  /* Bordure grise */
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  /* survol */
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  /* Transition couleur */
+.women-address {
+  color: rgb(6, 5, 5);
+  font-family: 'Montserrat', sans-serif;
 }
-
-/* survol */
-button:hover {
-  background-color: rgba(173, 120, 120, 0.5);
-  /* Plus sombre au survol */
-}
-
-/* Style pour les catégories (elles sont cachées au départ) */
-.category {
-  display: none;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
-
-}
-
+/* Map Leaflet */
 .leafletContainer {
-
   display: flex;
   justify-content: center;
   align-items: center;
   height: 600px;
-  /* overflow-y: scroll; */
   position: relative;
   outline-style: none;
   max-width: 90%;
   margin: 0 auto;
   overflow: hidden;
 }
-
 .leafletContainer::-webkit-scrollbar {
   height: 9px;
 }
-
 .leafletContainer::-webkit-scrollbar-track {
   background-color: #f0f0f0;
-  /* Couleur barre de défilement */
   border-radius: 4px;
 }
-
-.leafletContainer::-webkit-scrollbar-track {
-  background-color: #f0f0f0;
-  /* Couleur barre de défilement */
-  border-radius: 4px;
-}
-#map { 
+#map {
   width: 1200px;
   height: 600px;
   position: relative;
   outline-style: none;
+}
+
+footer {
+  margin: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+footer li {
+  color: #132A3C;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  list-style: none;
+  text-align: center;
 }
