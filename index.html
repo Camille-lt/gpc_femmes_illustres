@@ -1,80 +1,94 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
-    
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-  <body>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+<body>
+  <header>
+    <nav class="menu">
+      <a class="logo">PARIS PORTRAITS</a>
+      <ul>
+        <li class="navigation"><a href="#">Découvrir</a>
+        </li>
+        <li class="navigation"><a href="#">Femmes illustres</a>
+        </li>
+        <li class="navigation"><a href="#">Map</a>
+        </li>
+      </ul>
+    </nav>
 
     <div class="banner">
-      <h1>
-        Femmes illustres <br />
-        Paris Portraits
-      </h1>
+      <h1>Marchez sur les pas de ces icônes féminines</h1>
+      <p>Parcours Découverte au coeur de Paris</p>
     </div>
-    <div id="womenTitle">
-      <h1>Marchez sur les pas de ces icônes féminines au coeur de Paris...</h1>
-    </div>
-    <p class="p-1">
-      Parcours découverte - Du jardin Nelson Mandela au Parc des Princes. <br>
-      Partez à la découverte de Paris sur les traces de ses grandes figures
-      féminines.
+  </header>
+
+  <section class="project-description">
+    <h2>Parcours découverte - Paris Portraits</h2>
+    <p>
+      A l'occasion de la coupe féminine du monde de la FIFA 2019.<br>
+      Partez sur les traces des parisiennes illustres à travers les lieux emblématiques de leurs vies.
     </p>
-    <p class="p-2">
-      A l'occasion de la coupe féminine du monde de la FIFA 2019. <br />
-      Partez sur les traces des parisiennes illustres à travers les lieux
-      emblématiques de leurs vies.
+    <p>
+      Du jardin Nelson Mandela au Parc des Princes.<br>
+      Partez à la découverte de Paris sur les traces de ses grandes figures féminines.
     </p>
-    <div class="all-womentitle"></div>
-    <div class="banner-two">
-      <button id="artButton" data-category="Artistes">Artistes</button>
-      <button id="chefButton" data-category="Cheffes">Cheffes</button>
-      <button id="comButton" data-category="Comédiennes">Comédiennes</button>
-      <button id="letButton" data-category="Femmes de lettres">
-        Femmes de lettres
-      </button>
-      <button id="polButton" data-category="Politiques">Politiques</button>
-      <button id="sciButton" data-category="Scientifiques">
-        Scientifiques
-      </button>
-      <button id="spButton" data-category="Sportives">Sportives</button>
-      <button id="allButton" data-category="all">Toutes</button>
+  </section>
+
+  <section class="women-portraits">
+    <div class="portraits-description">
+      <h2>Les portraits des 77 femmes illustres:</h2>
+      <p>Découvrez les destins exceptionnels de ces femmes qui ont marqué l'histoire, les arts, les sciences et le
+        sport.
+        <br> À travers ces portraits, explorez leurs liens profonds avec la capitale, les lieux emblématiques de leurs
+        vies <br> et
+        la manière dont elles ont façonné l'identité de Paris.
+      </p>
+      <p>Cliquez sur une catégorie pour filtrer les profils et
+        découvrir leurs biographies détaillées.</p>
     </div>
-    <!-- <div class="second-title">
+
+    <div class="all-womentitle">
+      <div class="banner-two">
+        <button id="allButton" data-category="all" class="active">Toutes</button>
+        <button id="artButton" data-category="Artistes">Artistes</button>
+        <button id="chefButton" data-category="Cheffes">Cheffes</button>
+        <button id="comButton" data-category="Comédiennes">Comédiennes</button>
+        <button id="letButton" data-category="Femmes de lettres">
+          Femmes de lettres
+        </button>
+        <button id="polButton" data-category="Politiques">Politiques</button>
+        <button id="sciButton" data-category="Scientifiques">
+          Scientifiques
+        </button>
+        <button id="spButton" data-category="Sportives">Sportives</button>
+      </div>
+  </section>
+  <!-- <div class="second-title">
     </div> -->
-    <div id="womenPortraits"></div>
-    <div class="leafletContainer">
+  <div id="womenPortraits"></div>
+  <div class="leafletContainer">
     <div id="map"></div>
-        <script>
-            // centre sur Paris
-            
-          </script> 
-</div>
+    <script>
+      // centre sur Paris
+    </script>
+  </div>
+  <footer>
+    <li>API OPENDATA PARIS - Femmes illustres à Paris - Portraits </li>
+    <li>©️ Camille LEBIGOT - Fork Projet académique Ada Tech School </li>
+  </footer>
+  <script type="module" src="arrayIcons.js"></script>
+  <script type="module" src="script.js" defer></script>
+</body>
 
-    <!-- <div class="woman-card">
-        <div class="card-inner">
-          <div class="card-front">
-          </div>
-        </div>
-      </div> -->
-      <script type="module" src="arrayIcons.js"></script>
-    <script type="module" src="script.js" defer></script>
-  </body>
 </html>
-
