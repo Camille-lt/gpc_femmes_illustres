@@ -1,5 +1,6 @@
-<img width="1904" height="959" alt="Capture d’écran 2026-02-19 à 19 38 53" src="https://github.com/user-attachments/assets/56950f60-83f0-46cf-9576-f6b9386b8949" />
-<img width="1883" height="957" alt="Capture d’écran 2026-02-19 à 19 37 56" src="https://github.com/user-attachments/assets/2411ad0b-62c3-455b-978a-de2b250cbe3e" />
+<img width="1366" height="869" alt="Capture d’écran 2026-05-26 à 18 37 22" src="https://github.com/user-attachments/assets/ab36b50f-1177-4463-b920-28d4a3f30513" />
+
+Démo : https://camille-lt.github.io/gpc_femmes_illustres/
 📖 **GPC - Femmes Illustres
 🌟 **Présentation**
 **GPC - Femmes Illustres** est un projet dédié à la mise en avant de **figures féminines historiques et contemporaines ayant marqué l'histoire, les sciences, les arts et la politique.**
