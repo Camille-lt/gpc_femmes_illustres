@@ -18,12 +18,9 @@
     <nav class="menu">
       <a class="logo">PARIS PORTRAITS</a>
       <ul>
-        <li class="navigation"><a href="#">Découvrir</a>
-        </li>
-        <li class="navigation"><a href="#">Femmes illustres</a>
-        </li>
-        <li class="navigation"><a href="#">Map</a>
-        </li>
+  <li class="navigation"><a href="#project-description">Découvrir</a></li>
+      <li class="navigation"><a href="#women-portraits">Femmes illustres</a></li>
+      <li class="navigation"><a href="#leafletContainer">Map</a></li>
       </ul>
     </nav>
 
@@ -33,7 +30,7 @@
     </div>
   </header>
 
-  <section class="project-description">
+  <section id="project-description" class="project-description">
     <h2>Parcours découverte - Paris Portraits</h2>
     <p>
       A l'occasion de la coupe féminine du monde de la FIFA 2019.<br>
@@ -45,20 +42,22 @@
     </p>
   </section>
 
-  <section class="women-portraits">
+  <section id="women-portraits" class="women-portraits">
     <div class="portraits-description">
-      <h2>Les portraits des 77 femmes illustres:</h2>
+      <h2>Les portraits des 77 femmes illustres</h2>
       <p>Découvrez les destins exceptionnels de ces femmes qui ont marqué l'histoire, les arts, les sciences et le
         sport.
         <br> À travers ces portraits, explorez leurs liens profonds avec la capitale, les lieux emblématiques de leurs
         vies <br> et
         la manière dont elles ont façonné l'identité de Paris.
       </p>
-      <p>Cliquez sur une catégorie pour filtrer les profils et
-        découvrir leurs biographies détaillées.</p>
+      <div class="description-title">
+        <h3>Filtrer les portraits par catégories,
+          découvrez leurs biographies et où ces femmes illustres s'ancrent au coeur de la ville de Paris :</p>
+      </div>
     </div>
 
-    <div class="all-womentitle">
+    <div class="all-womentitle" >
       <div class="banner-two">
         <button id="allButton" data-category="all" class="active">Toutes</button>
         <button id="artButton" data-category="Artistes">Artistes</button>
@@ -74,14 +73,17 @@
         <button id="spButton" data-category="Sportives">Sportives</button>
       </div>
   </section>
-  <!-- <div class="second-title">
-    </div> -->
+  <section>
+    
+  </section>
+    </div>
+    <section id="leafletContainer">
   <div id="womenPortraits"></div>
   <div class="leafletContainer">
     <div id="map"></div>
     <script>
-      // centre sur Paris
     </script>
+    </section>
   </div>
   <footer>
     <li>API OPENDATA PARIS - Femmes illustres à Paris - Portraits </li>
