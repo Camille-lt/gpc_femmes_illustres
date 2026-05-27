@@ -1,6 +1,5 @@
 import { categoryIcons } from "./arrayIcons.js";
 
-
 const MAP_CONFIG = {
   center: [48.8566, 2.3522],
   zoom: 12,
@@ -13,7 +12,6 @@ const MAP_CONFIG = {
   maxBoundsViscosity: 1.0,
 };
 
-// Photos spécifiques (manquantes dans l'api)
 const CUSTOM_PHOTOS = {
   "Tatiana et Katia Levha": "photos/Tatiana_Katia_Levha.jpg",
   "Christelle Brua": "photos/Christelle_Brua.jpg",
@@ -26,7 +24,6 @@ const CUSTOM_PHOTOS = {
   "Suzanne Lenglen": "photos/Suzanne_Lenglen.jpg",
 };
 
-// Adresses corrigées
 const ADDRESS_CORRECTIONS = {
   "Suzanne Lenglen": "65, rue du Ranelagh, 75016 Paris",
   "Marie curie": "1, rue Pierre et Marie Curie, 75005 Paris",
@@ -43,7 +40,6 @@ const ADDRESS_CORRECTIONS = {
   "Nikki de St Phalle": "Place Igor Stravinsky, 75003 paris",
 };
 
-//INITIALISATION DE LA CARTE
 const map = L.map("map", MAP_CONFIG);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -51,7 +47,9 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
-//FONCTIONS OUTILS (SERVICES)
+let activeMarkers = [];
+const MAX_VISIBLE_MARKERS = 4;
+
 async function geocodeAddress(address) {
   try {
     const response = await fetch(
@@ -69,10 +67,22 @@ function addMarker(coords, address, name, categoryText) {
   const { lat, lon } = coords;
   const categoryIcon = categoryIcons[categoryText]?.icon;
 
-  const marker = L.marker([lat, lon], { icon: categoryIcon }).addTo(map);
+  activeMarkers.forEach(m => {
+    m.setOpacity(0.5);
+  });
+
+  // if (activeMarkers.length >= MAX_VISIBLE_MARKERS) {
+  //   const oldestMarker = activeMarkers.shift();
+  //   map.removeLayer(oldestMarker);
+  // }
+
+  const marker = L.marker([lat, lon], { icon: categoryIcon, opacity: 1.0 }).addTo(map);
+  activeMarkers.push(marker);
+
   const popupContent = `<b>Nom :</b> ${name}<br><b>Adresse :</b> ${address}`;
   
   const togglePopup = () => {
+    marker.setOpacity(1.0);
     marker.bindPopup(popupContent).openPopup();
     setTimeout(() => marker.closePopup(), 3000);
   };
@@ -81,7 +91,6 @@ function addMarker(coords, address, name, categoryText) {
   marker.on("click", togglePopup);
 }
 
-// 4. USINE À COMPOSANTS DOM (CREATION CARTE)
 function createWomanCard(woman) {
   const card = document.createElement("div");
   card.classList.add("card");
@@ -90,27 +99,23 @@ function createWomanCard(woman) {
   const cardInner = document.createElement("div");
   cardInner.classList.add("card-inner");
 
-  // Front & Back
   const cardFront = document.createElement("div");
   cardFront.classList.add("card-front");
   const cardBack = document.createElement("div");
   cardBack.classList.add("card-back");
 
-  // Nom
   const nameDiv = document.createElement("div");
   nameDiv.classList.add("name-index");
   const h2 = document.createElement("h2");
   h2.innerHTML = woman.name;
   nameDiv.appendChild(h2);
 
-  // Catégorie
   const categoryDiv = document.createElement("div");
   categoryDiv.classList.add("categorie");
   const h3 = document.createElement("h3");
   h3.innerHTML = woman.tab_name;
   categoryDiv.appendChild(h3);
 
-  // Photo (Gestion dynamique via le dictionnaire sans IF)
   const picturesDiv = document.createElement("div");
   picturesDiv.classList.add("women-pictures");
   const img = document.createElement("img");
@@ -124,7 +129,6 @@ function createWomanCard(woman) {
   }
   picturesDiv.appendChild(img);
 
-  // Descriptions
   const allDescriptions = document.createElement("div");
   allDescriptions.classList.add("desc-all");
   for (let j = 1; j <= 5; j++) {
@@ -135,26 +139,23 @@ function createWomanCard(woman) {
     }
   }
 
-  // Adresse
   const addressDiv = document.createElement("div");
   addressDiv.classList.add("women-address");
   const addressH3 = document.createElement("h3");
   addressH3.innerHTML = `Adresse : ${woman.short_desc}`;
   addressDiv.appendChild(addressH3);
 
-  // Assemblage
   cardFront.append(nameDiv, picturesDiv);
   cardBack.append(categoryDiv, addressDiv, allDescriptions);
   cardInner.append(cardFront, cardBack);
   card.appendChild(cardInner);
 
-  // Événements d'animation de la carte
-  card.addEventListener("click", () => card.classList.toggle("flipped"));
-  card.addEventListener("mouseleave", () => card.classList.remove("flipped"));
+  card.addEventListener("click", async function () {
+    card.classList.toggle("flipped");
+    
+    const isFlipped = card.classList.contains("flipped");
+    if (!isFlipped) return;
 
-  // Événement Clic pour le marqueur (Dictionnaire d'adresses sans IF)
-  card.addEventListener("click", async function (e) {
-    // Évite de déclencher le retournement ET la carte Leaflet en même temps si besoin
     let addressText = ADDRESS_CORRECTIONS[woman.name] || woman.short_desc;
     
     if (ADDRESS_CORRECTIONS[woman.name]) {
@@ -169,10 +170,11 @@ function createWomanCard(woman) {
     }
   });
 
+  card.addEventListener("mouseleave", () => card.classList.remove("flipped"));
+
   return card;
 }
 
-// 5. FONCTION PRINCIPALE
 async function womenList() {
   const url = "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/femmes-illustres-a-paris-portraits/records?limit=100&refine=tab_name%3A%22Artistes%22&refine=tab_name%3A%22Cheffes%22&refine=tab_name%3A%22Com%C3%A9diennes%22&refine=tab_name%3A%22Femmes%20de%20lettres%22&refine=tab_name%3A%22Politiques%22&refine=tab_name%3A%22Scientifiques%22&refine=tab_name%3A%22Sportives%22";
   
@@ -192,7 +194,6 @@ async function womenList() {
 
 womenList();
 
-//SYSTÈME DE FILTRAGE
 function setupFiltering() {
   const buttonIds = ["artButton", "chefButton", "comButton", "letButton", "polButton", "sciButton", "spButton", "allButton"];
   const buttons = buttonIds.map(id => document.getElementById(id)).filter(btn => btn !== null);
@@ -204,6 +205,9 @@ function setupFiltering() {
 
       buttons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
+
+      activeMarkers.forEach(m => map.removeLayer(m));
+      activeMarkers = [];
 
       cards.forEach((card) => {
         const cardCategory = card.getAttribute("data-category");
